@@ -1,22 +1,14 @@
-import { useState, useEffect } from "react";
-import logo from './logo.svg';
+import React from "react";
+import PlantPage from './components/PlantPage'
 import './App.css';
 
 function App() {
 
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
-    </div>
-  );
+      <div className="App">
+        <PlantPage />
+      </div>
+  )
 }
 
 export default App;
