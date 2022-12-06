@@ -3,7 +3,7 @@ import { Menu } from 'semantic-ui-react'
 
 const NavBar = () => {
     return (
-
+        <div></div>
     )
 }
 
