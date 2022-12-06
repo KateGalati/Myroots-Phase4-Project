@@ -24,7 +24,7 @@ const NavBar = () => {
                     </NavLink>
                 </Menu.Item>
                 <Menu.Item>
-                    <NavLink to="/plants">
+                    <NavLink to="/new">
                         <Button icon labelPosition='left'>
                         <Icon name='wordpress forms'/>
                         Add New Plant
