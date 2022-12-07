@@ -3,6 +3,14 @@ import { Menu, Button, Icon, Image } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
+
+    function handleLogOut(){
+        fetch('/logout', {
+            method:"DELETE"
+        })
+    }
+
+
     return (
         <div>
             <Menu>

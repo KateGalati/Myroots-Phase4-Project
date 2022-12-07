@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def index 
         plants = Plant.all 
@@ -17,8 +17,8 @@ class PlantsController < ApplicationController
         params.require(:plant).permit(:plant_name, :scientific_name, :light_requirement, :water_requirement, :humidity, :image)
     end
 
-    def render_unprocessable_entity_response(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    end
+    # def render_unprocessable_entity_response(invalid)
+    #     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    # end
 
 end
