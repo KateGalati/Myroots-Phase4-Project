@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-function Home (){
+const Home = () => {
+    const [userPlants, setUserPlants] = useState([])
 
     return(
         <div>

@@ -7,18 +7,32 @@ import Home from "./components/Home";
 import './App.css';
 
 function App() {
-
   //set state for user
-  const [currentUser, setCurrentUser] = useState(false)
+  const [user, setUser] = useState(null)
 
-  // const userConditional = !currentUser ? <Login error={'please login'} updateUser={updateUser} /> 
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
-  return (
+  if (user) {
+    return  (
       <div className="App">
         <NavBar />
         <PlantPage />
+        <Home />
       </div>
   )
+  } else {
+    return <Login onLogin={setUser} />;
+  }
+
+// Make a function that displays errors in a li 
+  // const userConditional = !currentUser ? <Login error={'please login'} updateUser={updateUser} /> 
+
 }
 
-export default App;
+export default App
