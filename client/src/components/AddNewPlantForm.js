@@ -10,6 +10,7 @@ const AddNewPlantForm = props => {
     const [water, setWater] = useState('')
     const [humidity, setHumidity] = useState('')
     const [image, setImage] = useState('')
+    const [formErrors, setFormErrors] = useState([])
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -29,8 +30,16 @@ const AddNewPlantForm = props => {
                 image: image
             }),
         })
-        .then(resp => resp.json())
-        .then(newPlant => handleAddPlant(newPlant))
+        .then((r) => {
+        if (r.ok) {
+            r.json().then((newPlant) => {
+                handleAddPlant(newPlant);
+                setFormErrors([]);
+              });
+            } else {
+              r.json().then((err) => setFormErrors(err.errors));
+            }
+    });
     }
     
     return (
@@ -48,6 +57,13 @@ const AddNewPlantForm = props => {
                     <Form.Input type="text" name="humidity" fluid label="Humidity" placeholder="Humidity" value={humidity} onChange={e => setHumidity(e.target.value)}/>
                     <Form.Input type="text" name="image" fluid label="Image URL" placeholder="Image URL" value={image} onChange={e => setImage(e.target.value)}/>
                 </Form.Group>
+                {formErrors.length > 0 
+                    ? formErrors.map((err) => (
+                        <p key={err} style={{ color: "red" }}>
+                            {err}
+                        </p>
+                    ))
+                : null}
                 <Form.Button className="new-plant-submit" type="submit">Add Plant</Form.Button>
             </Form>
         </div>
