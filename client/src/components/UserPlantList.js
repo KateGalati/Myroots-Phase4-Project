@@ -6,7 +6,7 @@ import { Card } from 'semantic-ui-react'
 const UserPlantList = props => {
     const {userPlants} = props
 
-    const renderUserPlantList = userPlants ? userPlants.plants.map(userPlant => <Link key={userPlant.id}><UserPlant key={userPlant.id} userPlant={userPlant}/></Link>) : "User has no plants"
+    const renderUserPlantList = userPlants.plants.map(userPlant => <Link key={userPlant.id}><UserPlant key={userPlant.id} userPlant={userPlant}/></Link>)
 
     return (
         <div>
