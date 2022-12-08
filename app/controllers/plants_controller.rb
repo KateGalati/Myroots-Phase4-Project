@@ -1,6 +1,8 @@
 class PlantsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+    before_action :authorize, only: [:create]
+
     def index 
         plants = Plant.all 
         render json: plants, except: [:created_at, :updated_at], status: :ok
