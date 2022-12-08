@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import PlantPage from './components/PlantPage'
 import NavBar from './components/NavBar'
 import Login from "./components/Login";
-import Home from "./components/Home";
+import UserHome from "./components/UserHome";
 
 import './App.css';
 
@@ -23,7 +23,7 @@ function App() {
       <div className="App">
         <NavBar />
         <PlantPage />
-        <Home />
+        <UserHome user={user}/>
       </div>
   )
   } else {

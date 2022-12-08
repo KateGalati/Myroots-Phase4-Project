@@ -16,7 +16,7 @@ const NavBar = () => {
             <Menu>
             <Image src='./logo.png' size='small'/>
                 <Menu.Item>
-                    <NavLink to="/">
+                    <NavLink to="/home">
                         <Button icon labelPosition='left'>
                         <Icon name='home'/>
                         Home
