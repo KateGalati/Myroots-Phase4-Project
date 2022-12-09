@@ -1,7 +1,7 @@
 class PlantsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    before_action :authorize, only: [:create]
+    # before_action :authorize, only: [:create]
 
     def index 
         plants = Plant.all 

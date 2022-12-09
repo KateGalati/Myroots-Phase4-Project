@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { Card } from 'semantic-ui-react'
 
 const UserPlantList = props => {
-    const {userPlants} = props
+    const {user, userPlants} = props
 
-    const renderUserPlantList = userPlants.plants.map(userPlant => <Link key={userPlant.id}><UserPlant key={userPlant.id} userPlant={userPlant}/></Link>)
+    const renderUserPlantList = userPlants.map(userPlant => <Link key={userPlant.id}><UserPlant key={userPlant.id} userPlant={userPlant} user={user}/></Link>)
 
     return (
         <div>

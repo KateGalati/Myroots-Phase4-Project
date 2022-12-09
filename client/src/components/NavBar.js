@@ -1,14 +1,17 @@
 import React from 'react'
 import { Menu, Button, Icon, Image } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = props => {
+    const {setUser} = props
 
-    function handleLogOut(){
-        fetch('/logout', {
-            method:"DELETE"
-        })
-    }
+    function handleLogoutClick() {
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+          if (r.ok) {
+            setUser(null);
+          }
+        });
+      }
 
 
     return (
@@ -16,28 +19,27 @@ const NavBar = () => {
             <Menu>
             <Image src='./logo.png' size='small'/>
                 <Menu.Item>
-                    <NavLink to="/home">
-                        <Button icon labelPosition='left'>
+                        <Button as={Link} to="/home" icon labelPosition='left'>
                         <Icon name='home'/>
                         Home
                         </Button>
-                    </NavLink>
                 </Menu.Item>
                 <Menu.Item>
-                    <NavLink to="/plants">
-                        <Button icon labelPosition='left'>
+                        <Button as={Link} to="/plants" icon labelPosition='left'>
                         <Icon name='search'/>
                         Search Plants
                         </Button>
-                    </NavLink>
                 </Menu.Item>
                 <Menu.Item>
-                    <NavLink to="/new">
-                        <Button icon labelPosition='left'>
+                        <Button as={Link} to="/new" icon labelPosition='left'>
                         <Icon name='wordpress forms'/>
                         Add New Plant
                         </Button>
-                    </NavLink>
+                </Menu.Item>
+                <Menu.Item>
+                        <Button onClick={handleLogoutClick}>
+                            Logout
+                        </Button>
                 </Menu.Item>
             </Menu>
         </div>
