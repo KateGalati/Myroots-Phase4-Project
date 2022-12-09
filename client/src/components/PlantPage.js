@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import PlantList from './PlantList'
-import { Switch, Route } from 'react-router-dom'
 import AddNewPlantForm from './AddNewPlantForm'
 
 const PlantPage = () => {
-
     const [plants, setPlants] = useState([])
 
     useEffect(() => {
@@ -20,14 +18,7 @@ const PlantPage = () => {
 
     return (
         <div>
-            <Switch>
-                <Route path="/plants">
-                    <PlantList plants={plants}/>
-                </Route>
-                <Route path="/new">
-                    <AddNewPlantForm handleAddPlant={handleAddPlant}/>
-                </Route>
-            </Switch>
+            <PlantList plants={plants}/>
         </div>
     )
 

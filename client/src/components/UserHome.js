@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react'
-import { Switch, Route } from 'react-router-dom'
 import UserPlantList from './UserPlantList'
 
 const UserHome = props => {
-    const {user} = props 
-    // const [userPlants, setUserPlants] = useState([])
+    const {user} = props
 
+    const [userPlants, setUserPlants] = useState([])
+
+    useEffect(() => {
+        fetch("/user_plants")
+          .then((r) => r.json())
+          .then(setUserPlants)
+      }, [])
 
     // useEffect(() => {
     //     fetch(`users/${user.id}`)
     //       .then((r) => r.json())
-    //       .then(setUserPlants)
+    //       .then(setUser)
     //   }, [])
 
     return(
         <div>
-            <Switch>
-                <Route path="/home">
-                    <UserPlantList userPlants={user.plants}/>
-                </Route>
-            </Switch>
+            <UserPlantList user={user} userPlants ={userPlants}/>
         </div>
     )
 }
