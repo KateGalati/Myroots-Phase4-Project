@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-image: 'public/background.png';
 }
 
 /* .App-logo {
@@ -50,5 +49,9 @@
 }
 
 .plantcard {
+  padding: 25px 25px 25px 25px;
+}
+
+.new-plant-segment {
   padding: 25px 25px 25px 25px;
 }
