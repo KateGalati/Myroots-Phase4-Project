@@ -11,6 +11,15 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [plants, setPlants] = useState([])
 
+  const [searchPlants, setSearchPlants] = useState('')
+
+  function changeSearch(event){
+    setSearchPlants(event.target.value)
+
+  }
+
+  const filteredPlants = plants.filter(plant => plant.plant_name.toLowerCase().includes(searchPlants.toLowerCase()))
+
   useEffect(() => {
     fetch("/plants")
       .then((r) => r.json())
@@ -42,7 +51,8 @@ const App = () => {
                 <UserHome user={user}/>
             </Route>
             <Route path="/plants">
-                <PlantPage plants={plants} />
+                <PlantPage plants={filteredPlants}
+                  changeSearch={changeSearch} />
             </Route>
             <Route path="/new">
                 <AddNewPlantForm handleAddPlant={handleAddPlant}/>
