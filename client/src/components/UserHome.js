@@ -12,15 +12,24 @@ const UserHome = props => {
           .then(setUserPlants)
       }, [])
 
-    // useEffect(() => {
-    //     fetch(`users/${user.id}`)
-    //       .then((r) => r.json())
-    //       .then(setUser)
-    //   }, [])
+    
+    const handleDelete = id => {
+        fetch(`/user_plants/${id}`, {
+            method: "DELETE",
+          }).then((r) => {
+            if (r.ok) {
+              setUserPlants((userPlants) =>
+                userPlants.filter((plant) => plant.id !== id)
+              );
+            }
+          });
+    }
+
+
 
     return(
         <div>
-            <UserPlantList user={user} userPlants ={userPlants}/>
+            <UserPlantList user={user} userPlants ={userPlants} handleDelete={handleDelete}/>
         </div>
     )
 }
