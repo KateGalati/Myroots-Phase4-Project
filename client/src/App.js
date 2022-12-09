@@ -3,12 +3,24 @@ import PlantPage from './components/PlantPage'
 import NavBar from './components/NavBar'
 import Login from "./components/Login";
 import UserHome from "./components/UserHome";
+import AddNewPlantForm from './components/AddNewPlantForm'
 import { Switch, Route } from 'react-router-dom'
-
 import './App.css';
 
-function App() {
+const App = () => {
   const [user, setUser] = useState(null)
+  const [plants, setPlants] = useState([])
+
+  useEffect(() => {
+    fetch("/plants")
+      .then((r) => r.json())
+      .then(setPlants)
+  }, [])
+
+  const handleAddPlant = newPlant => {
+      const updatedPlantArray = [...plants, newPlant]
+      setPlants(updatedPlantArray)
+  }
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -30,7 +42,10 @@ function App() {
                 <UserHome user={user}/>
             </Route>
             <Route path="/plants">
-                <PlantPage />
+                <PlantPage plants={plants} />
+            </Route>
+            <Route path="/new">
+                <AddNewPlantForm handleAddPlant={handleAddPlant}/>
             </Route>
           </Switch> 
         </main>   

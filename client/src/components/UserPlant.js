@@ -3,19 +3,16 @@ import {Card} from 'semantic-ui-react'
 
 const UserPlant = props => {
     const {user, userPlant} = props
-    console.log(userPlant)
 
-    const showUserPlants = () => {
-
-    }
-    
     return (
+        user.id === userPlant.user.id ?
         <Card ui fluid card >
-            <img src={userPlant.plant.image} wrapped ui={false} height={300} width={300}/>
+            <img src={userPlant.plant.image} wrapped ui={false} height={300} width={300} alt="plant"/>
             <Card.Content>
                 <Card.Header>{userPlant.plant.plant_name}</Card.Header>
             </Card.Content>
         </Card>
+        : null
     )
 
 }

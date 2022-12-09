@@ -6,7 +6,7 @@ const PlantCard = props => {
 
     return (
         <Card ui fluid card >
-            <img src={plant.image} wrapped ui={false} height={300} width={300}/>
+            <img src={plant.image} wrapped ui={false} height={300} width={300} alt="plant"/>
             <Card.Content>
                 <Card.Header>{plant.plant_name}</Card.Header>
             </Card.Content>
