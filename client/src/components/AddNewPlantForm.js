@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Form, Header, Icon} from 'semantic-ui-react'
 
 const AddNewPlantForm = props => {
@@ -22,10 +22,10 @@ const AddNewPlantForm = props => {
                 'Accepts': 'application/json'
             },
             body: JSON.stringify({
-                plantName: plantName,
-                scientificName: scientificName,
-                light: light,
-                water: water,
+                plant_name: plantName,
+                scientific_name: scientificName,
+                light_requirement: light,
+                water_requirement: water,
                 humidity: humidity,
                 image: image
             }),

@@ -7,7 +7,7 @@ const PlantPage = props => {
 
     return ( 
         <div>
-            <div class="search">
+            <div class="search-bar">
             Search Plants:
             <input placeholder='Plant Name...' onChange={props.changeSearch}></input>
             </div>

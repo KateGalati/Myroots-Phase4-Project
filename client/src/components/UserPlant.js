@@ -1,8 +1,8 @@
 import React from 'react'
-import {Card} from 'semantic-ui-react'
+import {Card, Button} from 'semantic-ui-react'
 
 const UserPlant = props => {
-    const {user, userPlant} = props
+    const {user, userPlant, handleDelete} = props
 
     return (
         user.id === userPlant.user.id ?
@@ -21,6 +21,7 @@ const UserPlant = props => {
                 <div class='plantinfo'>
                     Light: {userPlant.plant.light_requirement}
                 </div>
+                <Button onClick={() => handleDelete(userPlant.plant.id)}>Delete Plant</Button>
             </Card.Content>
         </Card>
         </div>
